@@ -28,32 +28,26 @@ function App() {
         },
       });
 
-      async function fetchLibraries(){
+      async function fetchLibraries(val){
         // Fetch data by library name
-        const responseByName = await axios.get("https://api.kirjastot.fi/v4/library", { params: { "name": value } });
+        const responseByName = await axios.get("https://api.kirjastot.fi/v4/library", { params: { "name": val } });
         const dataByName = responseByName.data.items;
 
         // Fetch data by city name
-        const responseByCityName = await axios.get("https://api.kirjastot.fi/v4/library", { params: { "city.name": value } });
+        const responseByCityName = await axios.get("https://api.kirjastot.fi/v4/library", { params: { "city.name": val } });
         const dataByCityName = responseByCityName.data.items;
 
         const combineData = dataByName.concat(dataByCityName) // Combine data without including duplicates
         setResult(combineData)
       }
 
-      useEffect(() => { // on url change update value
+    useEffect(() => { // on url change update value
         // Parse the query parameter from the URL
         const params = new URLSearchParams(location.search);
         const q = params.get('q');
         setValue(q || '');
+        fetchLibraries(q || '');
     }, [location.search]);
-
-    useEffect(() => { // on value change update libraries
-        // Fetch data only if value is not empty
-        if (value) {
-            fetchLibraries();
-        }
-    }, [value]);
       
   return (
     <ThemeProvider theme={theme}>
