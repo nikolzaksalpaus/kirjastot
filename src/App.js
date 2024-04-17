@@ -29,7 +29,7 @@ function App() {
     <ThemeProvider theme={theme}>
         <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", paddingY: "10px" }}>
             <Box sx={{ background: "#ffffff", width: "60%", borderRadius: "5px", padding: "20px", boxSizing: "border-box", marginY: "10px" }}>
-                <Typography variant="h1" sx={{ fontSize: "48px", fontWeight: "800", marginBottom: "24px" }}>App name</Typography>
+                <Typography variant="h1" sx={{ fontSize: "48px", fontWeight: "800", marginBottom: "24px" }}>Kirjastot</Typography>
                 <FormGroup row sx={{ display: "flex", gap: "10px" }}>
                     <TextField sx={{ flexGrow: "1" }} id="standard-basic" label="Find a library" variant="outlined" value={value} onChange={e => setValue(e.target.value)} />
                     <Button sx={{ width: "100px" }} fullWidth variant="contained" disableElevation onClick={async () => {
